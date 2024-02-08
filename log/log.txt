@@ -1,0 +1,120 @@
+Fault: 06-11-2023 18:31:13 - Не верное имя файла для подключения -anekdotControler
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:31:35 - Class  does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:32:27 - Не верное имя файла для подключения -anekdotControler
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:32:28 - Не верное имя файла для подключения -anekdotControler
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:32:33 - Не верное имя файла для подключения -anekdotControler
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:33:36 - Не верное имя файла для подключения -anekdotControler
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:33:50 - Не верное имя файла для подключения -anekdotController
+file C:\OSPanel\domains\anekdotes\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 06-11-2023 18:35:18 - Class anekdotController.php does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:37:55 - Class anekdotController.php does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:37:59 - Class anekdotController.php does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:39:20 - Class core\user\controller\anekdotController.php does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:39:28 - Class core\user\controller\anekdotController.php does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:43:23 - Method core\user\controller\anekdotController::request() does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:45:33 - Method core\user\controller\anekdotController::request() does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:45:51 - Method core\user\controller\anekdotController::request() does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 06-11-2023 18:45:53 - Method core\user\controller\anekdotController::request() does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 38
+
+Fault: 07-11-2023 13:11:52 - Отсутствует шаблон - templates/default/anekdotTemplates.php
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 88
+
+Fault: 07-11-2023 13:12:26 - Отсутствует шаблон - templates/default/anekdot
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 88
+
+Fault: 08-11-2023 19:01:06 - Не корректная директория сайта
+file C:\OSPanel\domains\anekdotes\core\base\controller\RouteController.php
+In line 93
+
+Fault: 08-11-2023 19:09:26 - Class  does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 39
+
+Fault: 08-11-2023 19:09:50 - Class  does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 39
+
+Fault: 08-11-2023 19:12:53 - Class  does not exist
+file C:\OSPanel\domains\anekdotes\core\base\controller\BaseController.php
+In line 41
+
+Fault: 20-11-2023 14:55:09 - Отсутствует шаблон - templates/default/telega
+file C:\OSPanel\domains\anekd\core\base\controller\BaseController.php
+In line 90
+
+Fault: 15-12-2023 17:48:56 - Не верное имя файла для подключения -core/base/model/PDO
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 15-12-2023 17:49:03 - Не верное имя файла для подключения -core/base/model/PDO
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 15-12-2023 17:49:35 - Не верное имя файла для подключения -core/base/model/PDO
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 15-12-2023 17:50:27 - Не верное имя файла для подключения -core/base/model/PDO
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 19-12-2023 13:05:02 - Не верное имя файла для подключения -controller/ApiBaseController
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 27
+
+Fault: 19-12-2023 13:34:57 - Не верное имя файла для подключения -core/base/model/api
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 31
+
+Fault: 19-12-2023 14:34:48 - Не верное имя файла для подключения -controller/ApiBaseController
+file C:\OSPanel\domains\anekd\core\base\settings\internal_settings.php
+In line 31
+

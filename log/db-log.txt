@@ -1,0 +1,24 @@
+Fault: 22-09-2023 2:50:42 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'cosmo227_aneksf'@'localhost' (using password: YES)
+file C:\www\anekdotes\core\base\model\BaseModel.php
+In line 23
+
+Fault: 05-11-2023 16:17:04 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\anekdotes\core\base\model\BaseModel.php
+In line 23
+
+Fault: 05-11-2023 16:17:18 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\anekdotes\core\base\model\BaseModel.php
+In line 23
+
+Fault: 05-11-2023 16:20:26 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\anekdotes\core\base\model\BaseModel.php
+In line 23
+
+Fault: 06-11-2023 13:08:03 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\anekdotes\core\base\model\BaseModel.php
+In line 23
+
+Fault: 06-11-2023 13:34:02 - Ошибка подключения к базе данных: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\anekdotes\core\base\model\BaseModel.php
+In line 23
+
