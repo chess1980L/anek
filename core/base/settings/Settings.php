@@ -29,10 +29,12 @@ class Settings
             'inputMethod' => 'inputData',
         ]
     ];
+
     public function __construct()
     {
         $crudRoutes = BaseModel::processCrud([
-            'action' => 'r', 'tags' => '*'
+            'action' => 'r',
+            'tags' => '*'
         ]);
 
         $lowercaseCrudRoutes = array_map(function ($route) {
@@ -42,14 +44,15 @@ class Settings
         $this->routes['user']['routes'] = $lowercaseCrudRoutes;
     }
 
-    static public function getId($id){
+    static public function getId($id)
+    {
 
-        $allId= BaseModel::processCrud([
+        $allId = BaseModel::processCrud([
             'action' => 'r',
-            'jokes' =>['id'=>$id],
+            'jokes' => ['id' => $id],
         ]);
 
-        return  $allId;
+        return $allId;
     }
 
     static public function countPage($tag = null)

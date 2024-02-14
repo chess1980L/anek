@@ -8,7 +8,7 @@ buttonElement.addEventListener('click', function() {
 
     if (document.getElementById('login').innerText !== '' || /^login\/.+/.test(inputValue)) {
         var login = document.getElementById('login').innerText;
-        var url = 'http://anekd/api/' + inputValue;
+        var url = 'http://anek/api/' + inputValue;
 
         if (document.getElementById('login').innerText !== '') {
             var loginStr = String(login).replace(/^"(.*)"$/, '$1');

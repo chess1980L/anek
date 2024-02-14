@@ -25,4 +25,5 @@ function autoloadMainClasses($class_name)
         throw new RouteException('Не верное имя файла для подключения -' . $class_name);
     }
 }
+
 spl_autoload_register('autoloadMainClasses');

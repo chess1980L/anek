@@ -3,6 +3,7 @@
 namespace api\messages;
 
 use api\controller\ApiBaseController;
+
 class RequestError
 {
     public static function displayErrorMessage($errorCode)
@@ -12,7 +13,7 @@ class RequestError
         if (is_numeric($errorCode)) {
             if (isset($messages[$errorCode])) {
                 $message = $messages[$errorCode];
-               ApiBaseController::encodeAndEcho( $message);
+                ApiBaseController::encodeAndEcho($message);
             }
         } else {
             ApiBaseController::encodeAndEcho($errorCode);

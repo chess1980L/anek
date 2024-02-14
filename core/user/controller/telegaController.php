@@ -9,13 +9,14 @@ use core\base\controller\BaseController;
 class telegaController extends BaseController
 {
 
-    protected  function inputdata(){
+    protected function inputdata()
+    {
 
-        $a =7;
+        $a = 7;
 
         $content = $this->render('', compact('a'));
 
-        return compact('content', );
+        return compact('content',);
     }
 
 

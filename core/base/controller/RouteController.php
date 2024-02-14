@@ -7,6 +7,7 @@
  */
 
 namespace core\base\controller;
+
 use core\base\exceptions\RouteException;
 use core\base\settings\Settings;
 
@@ -24,7 +25,9 @@ class RouteController extends BaseController
         $path = substr($_SERVER['PHP_SELF'], 0, strpos($_SERVER['PHP_SELF'], 'index.php'));
         if ($path === PATH) {
             $this->routes = Settings::get('routes'); // получение маршрутов из Settings
-            if (!$this->routes) throw new RouteException('Отсутствуют маршруты в базовых настройках', 1); // проверка пришли ли маршруты
+            if (!$this->routes) {
+                throw new RouteException('Отсутствуют маршруты в базовых настройках', 1);
+            } // проверка пришли ли маршруты
             $url = preg_split('/(\/)|(\?.*)/', $adress_str, 0, PREG_SPLIT_NO_EMPTY);
             $url = explode('/', substr($adress_str, strlen(PATH))); // масив url
             $url[0] = urldecode($url[0]);
@@ -42,7 +45,8 @@ class RouteController extends BaseController
             if (($path === $adress_str)
                 || ((in_array($url[0], $this->routes['user']['routes']) && !isset($url[1]))
                     || (is_numeric($url[0]) && $url[0] > 0 && $url[0] < $count)
-                    || (in_array($url[0], $this->routes['user']['routes']) && is_numeric($url[1]) && $url[1] > 0 && $url[1] < $count))) {
+                    || (in_array($url[0],
+                            $this->routes['user']['routes']) && is_numeric($url[1]) && $url[1] > 0 && $url[1] < $count))) {
 
                 $hrUrl = $this->routes['user']['hrUrl'];
                 $this->controller = $this->routes['user']['path'];
@@ -61,25 +65,23 @@ class RouteController extends BaseController
                 }
                 $this->createRoute($route, $url);
 
-            } elseif (preg_match('/\/anekdot-id-(\d+)\//', $adress_str, $matches) && ($joke = Settings::getID($matches[1])) !== true) {
+            } elseif (preg_match('/\/anekdot-id-(\d+)\//', $adress_str,
+                    $matches) && ($joke = Settings::getID($matches[1])) !== true) {
                 // адрес соответствует условию
                 $this->parameters['joke'] = $joke;
                 $this->controller = 'core\user\controller\anekdotController';
                 $this->inputMethod = !empty($route[1]) ? $route[1] : $this->routes['default']['inputMethod'];
-            }
-            elseif ($adress_str == '/telega/'){
+            } elseif ($adress_str == '/telega/') {
                 $this->controller = 'core\user\controller\telegaController';
                 $this->inputMethod = !empty($route[1]) ? $route[1] : $this->routes['default']['inputMethod'];
-            }
-
-            else {
+            } else {
                 $this->redirect($path . TEMPLATE . "404.php", 301);
                 exit();
             }
-            } else {
-                throw new RouteException('Не корректная директория сайта', 1);
-            }
+        } else {
+            throw new RouteException('Не корректная директория сайта', 1);
         }
+    }
 
 
     private function createRoute()

@@ -22,14 +22,19 @@ class Settings
 
     public function __construct()
     {
-        $crudRoutes = BaseModel::processCrud([
-            'action' => 'r',
-            'tags' => '*'
-        ]);
+        $crudRoutes = BaseModel::processCrud(
+            [
+                'action' => 'r',
+                'tags' => '*'
+            ]
+        );
 
-        $lowercaseCrudRoutes = array_map(function ($route) {
-            return mb_strtolower($route, 'UTF-8');
-        }, $crudRoutes);
+        $lowercaseCrudRoutes = array_map(
+            function ($route) {
+                return mb_strtolower($route, 'UTF-8');
+            },
+            $crudRoutes
+        );
 
         $shortKeyRoutes = [];
         $longKeyRoutes = [];
@@ -61,10 +66,8 @@ class Settings
         $this->routes = $resultRoutes;
     }
 
-
     static public function get($property)
     {
         return self::instance()->$property;
-
     }
 }

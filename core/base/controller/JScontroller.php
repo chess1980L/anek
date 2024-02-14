@@ -16,28 +16,25 @@ class JScontroller
         if (isset($crud['validation'])) {
             $return = BaseModel::checkModelCookie($crud['validation']['username'], $crud['validation']['password']);
             echo json_encode($return);
-        }
-        elseif (isset($crud['api'])){
+        } elseif (isset($crud['api'])) {
 
-            if (isset($crud['action'])){
-            $action = $crud['action'];
-            $ctg = $crud['ctg'];
-            $quantity= $crud['quantity'];
-            $login = $crud['login'];
-            $apiData = ApiModel::apiSwitchModel($action, $ctg, $quantity, $login);
+            if (isset($crud['action'])) {
+                $action = $crud['action'];
+                $ctg = $crud['ctg'];
+                $quantity = $crud['quantity'];
+                $login = $crud['login'];
+                $apiData = ApiModel::apiSwitchModel($action, $ctg, $quantity, $login);
 
-            ApiBaseController::encodeAndEcho($apiData);
+                ApiBaseController::encodeAndEcho($apiData);
 
-            }
-            elseif(isset($crud['requestLogin'])){
+            } elseif (isset($crud['requestLogin'])) {
                 $login = $crud['requestLogin'];
                 $apiData = ApiModel::loginModel($login);
                 ApiBaseController::encodeAndEcho($apiData);
 
 
             }
-        }
-        else {
+        } else {
             if (isset($crud['currentUrl'])) {
                 $currentUrl = urldecode($crud['currentUrl']);
             } else {

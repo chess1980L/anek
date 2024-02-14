@@ -178,7 +178,8 @@
                             <div id="<?= $joke['id'] ?>">
                                 <? echo preg_replace("/\n/s", '<br/>', $joke['joke']); ?> <br>
                                 <small class="text-muted text-orange"
-                                       style="font-size: smaller;"><?= date('d.m.Y H:i', strtotime($joke['joke_date'])) ?></small>
+                                       style="font-size: smaller;"><?= date('d.m.Y H:i',
+                                        strtotime($joke['joke_date'])) ?></small>
                             </div>
                             <button type="button" class="btn btn-link" id="<?= $joke['id'] ?>" style="display: none;">
                                 редактировать

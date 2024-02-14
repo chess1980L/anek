@@ -14,19 +14,20 @@ class anekdotController extends BaseController
         //templates/default/anekdot.php
 
         $tags = BaseModel::processCrud([
-            'action' => 'r', 'tags' => '**'
+            'action' => 'r',
+            'tags' => '**'
         ]);
 
-        $data= $this->parameters['joke'];
-        $data['tags']= $tags['tags'] ;
+        $data = $this->parameters['joke'];
+        $data['tags'] = $tags['tags'];
 
         $title = $data['jokes'][0]['joke'];
 
         $title = mb_substr($title, 0, 200, 'UTF-8');
-        $data['title']=$title;
+        $data['title'] = $title;
         $content = $this->render('', compact('data'));
 
-        return compact('content', );
+        return compact('content',);
 
 
     }

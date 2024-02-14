@@ -4,6 +4,15 @@ namespace api\model;
 
 class ApiModel
 {
+    /**
+     * Отправляет POST-запрос на указанный URL с JSON-данными.
+     *
+     * @param string $url URL-адрес запроса
+     * @param mixed $jsonData Данные для отправки в формате JSON
+     *
+     * @return string Результат запроса
+     */
+
     public static function sendRequest($url, $jsonData)
     {
         $curl = curl_init();
@@ -23,6 +32,15 @@ class ApiModel
         return $result;
     }
 
+    /**
+     * Выполняет действие с указанными параметрами.
+     *
+     * @param string $action Действие
+     * @param string $ctg Категория
+     * @param int $quantity Количество
+     * @param string $login Логин
+     */
+
     public static function actionModel($action, $ctg, $quantity, $login)
     {
         $data = array(
@@ -38,17 +56,21 @@ class ApiModel
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/index.php';
         // Вызов метода sendRequest
         self::sendRequest($url, $jsonData);
-
     }
+
+    /**
+     * Выполняет процесс логина с указанным логином.
+     *
+     * @param string $login Логин
+     */
+
 
     public static function loginModel($login)
     {
         // Ваш код для метода loginModel
         $data = array(
             'api' => 'api',
-
             'requestLogin' => $login,
-
         );
         // Кодирование массива в JSON
         $jsonData = json_encode($data);
@@ -56,8 +78,5 @@ class ApiModel
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/index.php';
         // Вызов метода sendRequest
         self::sendRequest($url, $jsonData);
-
-
-
     }
 }

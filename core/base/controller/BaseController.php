@@ -48,7 +48,7 @@ abstract class BaseController
         $inputData = $args['inputMethod'];
 
         $data = $this->$inputData();
-         if ($data) {
+        if ($data) {
             $this->page = $data;
         };
         if ($this->errors) {
@@ -60,7 +60,9 @@ abstract class BaseController
     protected function getPage()
     {
         if (is_array($this->page)) {
-            foreach ($this->page as $block) echo $block;
+            foreach ($this->page as $block) {
+                echo $block;
+            }
         } else {
             echo $this->page;
         }
@@ -79,7 +81,9 @@ abstract class BaseController
             $space = str_replace('\\', '/', $class->getNamespaceName() . '\\');
             $routes = Settings::get('routes');
 
-            if ($space === $routes['user']['path']) $template = TEMPLATE;
+            if ($space === $routes['user']['path']) {
+                $template = TEMPLATE;
+            }
 
             $path = $template . explode('controller', strtolower($class->getShortName()))[0];
 
@@ -87,7 +91,9 @@ abstract class BaseController
 
         ob_start();
 
-        if (!@include $path . '.php') throw new RouteException('Отсутствует шаблон - ' . $path);
+        if (!@include $path . '.php') {
+            throw new RouteException('Отсутствует шаблон - ' . $path);
+        }
 
         return ob_get_clean();
     }

@@ -1,4 +1,3 @@
-
 let pseudoUrl = []
 
 var currentElement = 0
@@ -73,6 +72,7 @@ function setValueCheckboxes(tags) {
         }
     });
 }
+
 //  заполняет значениями поля ввода
 function populateInputs(joke) {
 
@@ -82,6 +82,7 @@ function populateInputs(joke) {
     idInput.value = joke.id;
     jokeTextarea.value = joke.joke;
 }
+
 // показ анекдота
 function showJoke(data = null) {
 
@@ -131,7 +132,7 @@ function renderJokes(data) {
         editButton.type = 'button';
         editButton.className = 'btn btn-link';
         editButton.id = joke.id;
-        editButton.innerText = 'редактировать (' + data.jokes[i]['id'] +')';
+        editButton.innerText = 'редактировать (' + data.jokes[i]['id'] + ')';
 
         editButton.addEventListener('click', (function (jokeId) {
             return function () {
@@ -188,6 +189,7 @@ function renderJokes(data) {
     }
     createPagination(pseudoUrl.tag)
 }
+
 function showTagJoke(tag) {
     var crud = {
         action: 'r',

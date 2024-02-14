@@ -13,12 +13,12 @@ use core\base\Settings\Db;
 use PDO;
 
 
-
 class ApiModel
 {
     protected $pdo;
 
     use Singleton;
+
     private function __construct()
     {
 
@@ -29,7 +29,8 @@ class ApiModel
         }
     }
 
-    public static function loginModel($login){
+    public static function loginModel($login)
+    {
 
         $pdo = self::Instance()->pdo;
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -40,7 +41,7 @@ class ApiModel
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($result) {
+        if ($result) {
             return $login;
         } else {
             return false;
@@ -56,7 +57,7 @@ class ApiModel
         switch ($action) {
             case 'random':
                 // Вызываем метод для случая, когда $action равно 'random'
-                $result = self::handleRandom($pdo, $ctg, $quantity,  $login);
+                $result = self::handleRandom($pdo, $ctg, $quantity, $login);
                 break;
 
             case 'last':
@@ -80,9 +81,10 @@ class ApiModel
                 break;
         }
 
- ApiBaseController::encodeAndEcho($result);
+        ApiBaseController::encodeAndEcho($result);
 
     }
+
     static function handleRandom($pdo, $ctg, $quantity, $login)
     {
 
@@ -174,8 +176,6 @@ class ApiModel
     }
 
 
-
-
     static function getJokes($pdo, $ctg, $quantity, $viewedJokes)
     {
         if (empty($viewedJokes)) {
@@ -193,9 +193,11 @@ class ApiModel
             if (empty($ctg)) {
                 // Если $ctg пусто, выбираем шутки из таблицы joke, исключая просмотренные шутки
                 if ($quantity == '*') {
-                    $sql = "SELECT id, joke FROM joke WHERE id NOT IN (" . implode(',', $viewedJokes) . ") ORDER BY id DESC";
+                    $sql = "SELECT id, joke FROM joke WHERE id NOT IN (" . implode(',',
+                            $viewedJokes) . ") ORDER BY id DESC";
                 } else {
-                    $sql = "SELECT id, joke FROM joke WHERE id NOT IN (" . implode(',', $viewedJokes) . ") ORDER BY id DESC LIMIT :quantity";
+                    $sql = "SELECT id, joke FROM joke WHERE id NOT IN (" . implode(',',
+                            $viewedJokes) . ") ORDER BY id DESC LIMIT :quantity";
                 }
                 $stmt = $pdo->prepare($sql);
                 if ($quantity != '*') {

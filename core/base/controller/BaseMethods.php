@@ -18,16 +18,22 @@ trait BaseMethods
     }
 
 
-    protected function redirect($http = false, $code = false){
+    protected function redirect($http = false, $code = false)
+    {
 
-        if($code){
+        if ($code) {
             $codes = ['301' => 'HTTP/1.1 301 Move Permanently'];
 
-            if($codes[$code]) header($codes[$code]);
+            if ($codes[$code]) {
+                header($codes[$code]);
+            }
         }
 
-        if($http) $redirect = $http;
-        else $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+        if ($http) {
+            $redirect = $http;
+        } else {
+            $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+        }
 
         header("Location: $redirect");
 

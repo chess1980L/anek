@@ -35,12 +35,12 @@ echo "Второй анекдот добавлен. Его id = {$id2}\n";
 // второй - ассоциативный массив в формате название_поля:значение
 // признак, по которому обновляются строки, в формате поле => значение. Может быть несколько полей, тогда условия объединяются через AND
 $anekdata2 = ['joke' => 'Обновлённый тестовый анекдот N2'];
-$db->update('joke', $anekdata2,  array('id' => $id2));
+$db->update('joke', $anekdata2, array('id' => $id2));
 
 // А теперь извлечём данные из joke
 //Если мы извлекаем только одну строку, то используем getResult
 
-$anek = $db->getResult("SELECT * FROM joke where id=:id", array('id'=>$id2));
+$anek = $db->getResult("SELECT * FROM joke where id=:id", array('id' => $id2));
 echo "Извлекаем второй анекдот: <br>\n";
 echo var_export($anek, true) . "<br>\n";
 

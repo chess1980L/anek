@@ -1,4 +1,5 @@
 <?php
+
 namespace api\controller;
 
 use api\model\ApiModel;
@@ -6,6 +7,10 @@ use api\messages\RequestError;
 use core\base\settings\Settings;
 use api\messages;
 
+/**
+ * Class ApiBaseController
+ * @package api\controller
+ */
 class ApiBaseController
 {
     private $listControllers;
@@ -15,6 +20,10 @@ class ApiBaseController
         $this->listControllers = include('settings/listControllers.php');
         $this->handleRequest();
     }
+
+    /**
+     * Обработка запроса.
+     */
 
     private function handleRequest()
     {
@@ -57,10 +66,9 @@ class ApiBaseController
                 $ctg = $parameters[1];
                 $ctg = urldecode($ctg);
 
-  $ctg =  $this->compareCategory( $ctg);
+                $ctg = $this->compareCategory($ctg);
 
                 $login = end($parameters);
-
             } else {
                 $quantity = '';
                 $ctg = '';
@@ -73,50 +81,52 @@ class ApiBaseController
                 $this->actionController($action, $ctg, $quantity, $login);
             }
         } else {
-
             RequestError::displayErrorMessage(2);
         }
     }
 
+    /**
+     * Сравнивает категорию с массивом маршрутов и возвращает соответствующее значение.
+     *
+     * @param string $ctg Категория для сравнения
+     * @return string Найденное значение из массива маршрутов
+     */
+
     private function compareCategory($ctg)
     {
         $found = false;
-        $resultArray  = Settings::get('routes');
-
-
-        foreach ( $resultArray as $key => $value) {
-
-            if ($key == $value){
+        $resultArray = Settings::get('routes');
+        foreach ($resultArray as $key => $value) {
+            if ($key == $value) {
                 // Вычисляем расстояние Левенштейна между $value и $ctg
-                $distance = $this-> levenshtein_utf8($value, $ctg);
+                $distance = $this->levenshtein_utf8($value, $ctg);
 
                 // Если расстояние Левенштейна меньше или равно количеству допустимых опечаток
                 if ($distance <= maxTypos) {
-
-
                     return $value;
                 }
-            } elseif( $key == $ctg){
-
-
+            } elseif ($key == $ctg) {
                 return $value;
-            }
-            else{
+            } else {
                 $found = false;
-
             }
-
         }
 
         if (!$found) {
             RequestError::displayErrorMessage(3);
         }
-
-
     }
 
+    /**
+     * Вычисляет расстояние Левенштейна между двумя строками UTF-8.
+     *
+     * @param string $s1 Первая строка для сравнения
+     * @param string $s2 Вторая строка для сравнения
+     * @return int Расстояние Левенштейна между двумя строками
+     */
 
-  private  function levenshtein_utf8($s1, $s2) {
+    private function levenshtein_utf8($s1, $s2)
+    {
         $s1 = preg_split('//u', $s1, -1, PREG_SPLIT_NO_EMPTY);
         $s2 = preg_split('//u', $s2, -1, PREG_SPLIT_NO_EMPTY);
         $m = count($s1);
@@ -145,10 +155,25 @@ class ApiBaseController
         return $matrix[$m][$n];
     }
 
+    /**
+     * Обрабатывает контроллер логина.
+     *
+     * @param string $login Логин для обработки
+     */
+
     private function loginController($login)
     {
         ApiModel::loginModel($login);
     }
+
+    /**
+     * Обрабатывает контроллер действия.
+     *
+     * @param string $action Действие для обработки
+     * @param string $ctg Категория для обработки
+     * @param int|string $quantity Количество для обработки
+     * @param string $login Логин для обработки
+     */
 
     private function actionController($action, $ctg, $quantity, $login)
     {
@@ -164,10 +189,20 @@ class ApiBaseController
         exit();
     }
 
+    /**
+     * Выводит шаблон страницы.
+     */
+
     private function templates()
     {
         require_once 'view/index.php';
     }
+
+    /**
+     * Кодирует данные в формат JSON и выводит их.
+     *
+     * @param mixed $data Данные для кодирования и вывода
+     */
 
     public static function encodeAndEcho($data)
     {

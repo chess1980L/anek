@@ -19,7 +19,8 @@ class IndexController extends BaseController
 
                 $data = BaseModel::processCrud([
                         'action' => 'r',
-                        $section]
+                        $section
+                    ]
                 );
 
             } else {  // это число
@@ -27,13 +28,15 @@ class IndexController extends BaseController
                 $offset = $this->parameters[0][0];
                 $data = BaseModel::processCrud([
                         'action' => 'r',
-                        'offset' => $offset]
+                        'offset' => $offset
+                    ]
                 );
             }
 
         } else {
             $data = BaseModel::processCrud([
-                'action' => 'r']);
+                'action' => 'r'
+            ]);
 
         }
 
@@ -51,7 +54,7 @@ class IndexController extends BaseController
 
         $content = $this->render('', compact('data'));
 
-        return compact('content', );
+        return compact('content',);
 
     }
 

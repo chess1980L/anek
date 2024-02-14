@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var form = document.querySelector('form');
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault(); // предотвращаем отправку формы
 
         var username = document.getElementById('username').value;
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/last/4', true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const response = xhr.responseText;
                 // Обработка ответа

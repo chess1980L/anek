@@ -178,13 +178,16 @@
                             <div id="<?= $joke['id'] ?>">
                                 <? echo preg_replace("/\n/s", '<br/>', $joke['joke']); ?> <br>
                                 <small class="text-muted text-orange"
-                                       style="font-size: smaller;"><?= date('d.m.Y H:i', strtotime($joke['joke_date'])) ?></small>
+                                       style="font-size: smaller;"><?= date('d.m.Y H:i',
+                                        strtotime($joke['joke_date'])) ?></small>
                             </div>
                             <button type="button" class="btn btn-link" id="<?= $joke['id'] ?>" style="display: none;">
                                 редактировать
                             </button>
 
-                            <p><a href="/anekdot-id-<?= $joke['id']?>/" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Info link</a></p>
+                            <p><a href="/anekdot-id-<?= $joke['id'] ?>/"
+                                  class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Info
+                                    link</a></p>
                         </div>
                         <div class="col-sm" id="<?= $joke['id'] ?>">
                             <?php foreach ($joke['tags'] as $tag): ?>
@@ -203,9 +206,9 @@
     </div>
 
 
-        <div id="myElement" class="d-flex flex-column justify-content-center align-items-center" style="height: 1vh;">
-            <?= $data['pagination'] ?>
-        </div>
+    <div id="myElement" class="d-flex flex-column justify-content-center align-items-center" style="height: 1vh;">
+        <?= $data['pagination'] ?>
+    </div>
 
     <div class="d-flex flex-column justify-content-end align-items-center" style="height: 1vh;">
         <div class="jsP">

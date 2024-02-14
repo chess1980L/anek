@@ -1,6 +1,7 @@
 <?php
 
 namespace core\base\model;
+
 use core\base\exceptions\DbException;
 use core\base\controller\Singleton;
 use core\base\settings\Db;
@@ -60,14 +61,20 @@ class BaseModel
 
         if ($params['action'] === 'r') {
             return self::readDatabase($params);
-        } else if ($params['action'] === 'c') {
-            return self::createLine($params);
-        } else if ($params['action'] === 'd') {
-            return self::deleteRecord($params);
-        } else if ($params['action'] === 'u') {
-            return self::updateJoke($params);
         } else {
-            return 'Invalid action';
+            if ($params['action'] === 'c') {
+                return self::createLine($params);
+            } else {
+                if ($params['action'] === 'd') {
+                    return self::deleteRecord($params);
+                } else {
+                    if ($params['action'] === 'u') {
+                        return self::updateJoke($params);
+                    } else {
+                        return 'Invalid action';
+                    }
+                }
+            }
         }
 
     }
@@ -282,7 +289,7 @@ class BaseModel
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         }
 
-        if (isset($params['tags']) && $params['tags'] == '**'){
+        if (isset($params['tags']) && $params['tags'] == '**') {
 
             $tagStmt = $pdo->prepare("SELECT id, tag FROM tag");
             $tagStmt->execute();
@@ -290,9 +297,7 @@ class BaseModel
             $data['tags'] = $tags;
             return $data;
 
-        }
-
-        else {
+        } else {
             // Если ключ не существует, выбираем последние 20 шуток и их теги
             $stmt = $pdo->prepare("
         SELECT joke.id, joke.joke, GROUP_CONCAT(tag.id SEPARATOR ',') AS tags, joke_date, user
@@ -459,7 +464,8 @@ class BaseModel
         $jokeValue = trim($jokeValue); // Убираем пробелы по краям
         $jokeValue = preg_replace('/\s+/', ' ', $jokeValue); // Убираем двойные пробелы
 
-        $jokeValue = preg_replace('/[^a-zA-Zа-яА-Я0-9\s]/u', '', $jokeValue); // Убираем специальные символы тире, переносы строк и знаки пунктуации
+        $jokeValue = preg_replace('/[^a-zA-Zа-яА-Я0-9\s]/u', '',
+            $jokeValue); // Убираем специальные символы тире, переносы строк и знаки пунктуации
         $jokeValue = str_replace(',', '', $jokeValue); // Убираем запятые
         $jokeValue = str_replace('.', '', $jokeValue); // Убираем точки
         $jokeValue = str_replace('!', '', $jokeValue); // Убираем восклицательные знаки
@@ -472,7 +478,8 @@ class BaseModel
             $joke['joke'] = trim($joke['joke']); // Убираем пробелы по краям
             $joke['joke'] = preg_replace('/\s+/', ' ', $joke['joke']); // Убираем двойные пробелы
 
-            $joke['joke'] = preg_replace('/[^a-zA-Zа-яА-Я0-9\s]/u', '', $joke['joke']); // Убираем специальные символы тире, переносы строк и знаки пунктуации
+            $joke['joke'] = preg_replace('/[^a-zA-Zа-яА-Я0-9\s]/u', '',
+                $joke['joke']); // Убираем специальные символы тире, переносы строк и знаки пунктуации
             $joke['joke'] = str_replace(',', '', $joke['joke']); // Убираем запятые
             $joke['joke'] = str_replace('.', '', $joke['joke']); // Убираем точки
             $joke['joke'] = str_replace('!', '', $joke['joke']); // Убираем восклицательные знаки
